@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz Aniversário!</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      background: linear-gradient(to right, #dbd0d8, #dbdbd8);
+      font-family: 'Roboto', cursive, sans-serif;
+      color: black;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+#dbd0d8, #dbdbd8
+    h1 {
+      margin-top: 50px;
+      font-size: 3em;
+      animation: pulse 1.5s infinite ease-in-out;
+      position: relative;
+      z-index: 2;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 20px auto;
+      position: relative;
+      z-index: 2;
+      padding: 0 15px;
+    }
+
+    audio {
+      margin-top: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff69b4;
+      position: relative;
+      z-index: 2;
+      outline: none;
+    }
+
+    /* Galeria */
+    .gallery {
+      margin: 40px auto;
+      max-width: 1000px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    figure {
+      margin: 0;
+      text-align: center;
+      width: 220px;
+      cursor: default;
+    }
+
+    figure img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 5px solid white;
+      box-shadow: 0 0 10px #ff69b4;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    figure img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ffff99;
+    }
+
+    figcaption {
+      margin-top: 8px;
+      font-size: 1em;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+      animation: pulseRotate 3s ease-in-out infinite;
+    }
+
+    /* Animações */
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); color: white; }
+      50% { transform: scale(1.1); color: #ffff99; }
+    }
+
+    @keyframes pulseRotate {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(3deg); }
+    }
+
+    /* Confetes */
+    .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: white;
+    filter: drop-shadow(0 0 2px white);
+    animation: fall 4s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.2;
+  }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Estrelas */
+    .star {
+  position: fixed;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.5; /* antes era 0.8 */
+  animation: twinkle 3s infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+    @keyframes twinkle {
+      0% {opacity: 0.3;}
+      100% {opacity: 1;}
+    }
+
+    /* Balões */
+    .balloon {
+  position: fixed;
+  bottom: -150px;
+  width: 50px;
+  height: 70px;
+  border-radius: 50% / 60%;
+  background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  opacity: 0.5; /* antes era 0.9 */
+  animation: rise 7s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 95, 109, 0.7));
+  pointer-events: none;
+  z-index: 0;
+}
+
+    .balloon:nth-child(2n) {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+    .balloon:nth-child(3n) {
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .custom-player {
+  margin-top: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  border-radius: 30px;
+  box-shadow: 0 0 15px #ff69b4;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+  position: relative;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 100;
+}
+
+.custom-player button {
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #da0b7a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #fff;
+}
+
+.custom-player button:hover {
+  background-color: #ffff99;
+  color: #000;
+}
+
+.custom-player span {
+  color: #000;
+  font-size: 1em;
+}
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Feliz Aniversário meu amorzinho! 🎂</h1>
+  <p>Dá o play antes de ler 😘</p>
+<audio id="audioPlayer" src="musica.mp3"></audio>
+
+<div class="custom-player">
+  <button id="playPauseBtn">⏸️</button>
+</div>
+
+
+  <p>Hoje o dia nasceu mais bonito, porque é o seu dia.
+  O mundo ficou mais colorido desde que você chegou, mas ele se tornou verdadeiramente especial no momento em que cruzamos nossos caminhos.
+
+  Parabéns, meu amor! Que a vida te abrace com tudo de mais lindo que existe.
+  Você merece sorrisos sinceros, abraços apertados, sonhos realizados e todos os motivos do mundo pra ser feliz — e eu quero estar ao seu lado em cada um deles.
+
+  Obrigado por ser essa pessoa incrível, que me inspira, me acalma e me faz acreditar no amor todos os dias.
+  Neste novo ciclo, eu só peço pra continuar fazendo parte da sua caminhada, dividindo alegrias, superando desafios e celebrando cada momento juntos.
+
+  Te amo hoje e sempre. Feliz aniversário, meu maior amor do mundo. 💖🎉</p>
+
+  <div class="gallery">
+    <figure>
+      <img src="foto1.jpg" alt="Foto 1" />
+      <figcaption>"Eu prometo te amar por toda a eternidade. Todos os dias da minha vida."
+        — Edward Cullen</figcaption>
+    </figure>
+    <figure>
+      <img src="foto2.jpg" alt="Foto 2" />
+      <figcaption>"Eu não me arrependo de estar apaixonado por você." — Damon Salvatore</figcaption>
+    </figure>
+    <figure>
+      <img src="foto3.jpg" alt="Foto 3" />
+      <figcaption>"Me escolha. Me pegue. Me ame" — Meredith Grey</figcaption>
+    </figure>
+    <figure>
+      <img src="foto4.jpg" alt="Foto 4" />
+      <figcaption>"Eu te amo, e sempre vou te amar, não importa o que aconteça." — Clark(Smallville)</figcaption>
+    </figure>
+  </div>
+
+  <script>
+    window.onload = () => {
+      // Criar confetes
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = Math.random() * 100 + 'vh';
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(confetti);
+      }
+
+      const audio = document.getElementById("audioPlayer");
+      const btn = document.getElementById("playPauseBtn");
+      const status = document.getElementById("audioStatus");
+
+      btn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          btn.textContent = "⏸️";
+          status.textContent = "Tocando";
+        } else {
+          audio.pause();
+          btn.textContent = "▶️";
+          status.textContent = "Pausado";
+        }
+      });
+
+      // Criar estrelas
+      for (let i = 0; i < 30; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        const size = (Math.random() * 3 + 1);
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.animationDelay = (Math.random() * 3) + 's';
+        document.body.appendChild(star);
+      }
+
+      // Criar balões
+      for (let i = 0; i < 6; i++) {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.animationDuration = (6 + Math.random() * 6) + 's';
+        balloon.style.animationDelay = (Math.random() * 10) + 's';
+        document.body.appendChild(balloon);
+      }
+    };
+  </script>
+
+</body>
+</html>
